@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "start:dev": "node index.js --action add --name Mango --email mango@gmail.com --phone 322-22-22"
+    "start:dev": "node index.js --action remove --id qdggE76Jtbfd9eWJHrssH"
   },
   "author": "",
   "license": "ISC",

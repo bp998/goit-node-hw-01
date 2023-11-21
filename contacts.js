@@ -33,11 +33,17 @@ function getContactById(contactId) {
 function addContact(name, email, phone) {
   let id = nanoid();
   parsedList = [...parsedList, { id: `${id}`, name, email, phone }];
-  console.table(parsedList);
+  console.log(`Contact ${name} added!`.green);
 }
 
 function removeContact(contactId) {
-  // ...twój kod
+  let idInList = parsedList.find((contact) => contact.id === contactId);
+  if (!idInList) {
+    console.log(`Contact with id ${contactId} not found`.red);
+  } else {
+    parsedList = parsedList.filter((contact) => contact.id !== contactId);
+    console.log(`Contact with id ${contactId} deleted`.green);
+  }
 }
 
 module.exports = {

@@ -45,7 +45,8 @@ function invokeAction({ action, id, name, email, phone }) {
       break;
 
     case "remove":
-      // ... id
+      removeContact(id);
+      rl.close();
       break;
 
     default:
