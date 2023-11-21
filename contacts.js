@@ -1,6 +1,8 @@
 const fs = require("fs");
 const path = require("path");
 require("colors");
+const { nanoid } = require("nanoid");
+
 const contactsPath = path.join(__dirname, "db", "contacts.json");
 
 let parsedList = [];
@@ -28,11 +30,13 @@ function getContactById(contactId) {
   }
 }
 
-function removeContact(contactId) {
-  // ...twój kod
+function addContact(name, email, phone) {
+  let id = nanoid();
+  parsedList = [...parsedList, { id: `${id}`, name, email, phone }];
+  console.table(parsedList);
 }
 
-function addContact(name, email, phone) {
+function removeContact(contactId) {
   // ...twój kod
 }
 
