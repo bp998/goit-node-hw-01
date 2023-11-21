@@ -1,22 +1,25 @@
-// const readline = require("readline");
-
+const readline = require("readline");
 const fs = require("fs");
 const path = require("path");
-const contactsPath = path.join(__dirname, "db", "contacts.json");
+const { contactsPath } = require("./contacts.js");
+require("colors");
 
-fs.readFile(contactsPath, (err, data) => {
-  if (!err) {
-    const rawData = data.toString();
-    const contacts = JSON.parse(rawData);
-    console.log(contacts);
-  } else console.log(err);
-});
+// const contactsPath = path.join(__dirname, "db", "contacts.json");
 
-// const rl = readline.createInterface({
-//   input: process.stdin,
-//   output: process.stdout,
+// fs.readFile(contactsPath, (err, data) => {
+//   if (!err) {
+//     const rawData = data.toString();
+//     const contacts = JSON.parse(rawData);
+//     // console.log(contacts);
+//     // contacts.map((contact) => console.log(contact.name));
+//   } else console.log(err);
 // });
 
-// rl.on("line", (command) => {
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+// rl.question("Wprwoadz polecenie\n".yellow, (command) => {
 //   console.log(`Twoje polecenie ${command}`);
 // });
