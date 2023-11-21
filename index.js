@@ -1,25 +1,49 @@
 const readline = require("readline");
 const fs = require("fs");
 const path = require("path");
-const { contactsPath } = require("./contacts.js");
+const { program } = require("commander");
+const { contactsPath, listContacts } = require("./contacts.js");
 require("colors");
-
-// const contactsPath = path.join(__dirname, "db", "contacts.json");
-
-// fs.readFile(contactsPath, (err, data) => {
-//   if (!err) {
-//     const rawData = data.toString();
-//     const contacts = JSON.parse(rawData);
-//     // console.log(contacts);
-//     // contacts.map((contact) => console.log(contact.name));
-//   } else console.log(err);
-// });
 
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
 });
 
-// rl.question("Wprwoadz polecenie\n".yellow, (command) => {
-//   console.log(`Twoje polecenie ${command}`);
-// });
+program
+  .option("-a, --action <type>", "choose action")
+  .option("-i, --id <type>", "user id")
+  .option("-n, --name <type>", "user name")
+  .option("-e, --email <type>", "user email")
+  .option("-p, --phone <type>", "user phone");
+
+program.parse(process.argv);
+
+const argv = program.opts();
+
+// TODO: refaktor
+function invokeAction({ action, id, name, email, phone }) {
+  switch (action) {
+    case "list":
+      listContacts();
+      break;
+
+    case "get":
+      // ... id
+      break;
+
+    case "add":
+      // ... name email phone
+      break;
+
+    case "remove":
+      // ... id
+      break;
+
+    default:
+      console.warn("\x1B[31m Unknown action type!");
+      rl.close();
+  }
+}
+
+invokeAction(argv);
