@@ -2,7 +2,13 @@ const readline = require("readline");
 const fs = require("fs");
 const path = require("path");
 const { program } = require("commander");
-const { contactsPath, listContacts } = require("./contacts.js");
+const {
+  contactsPath,
+  listContacts,
+  getContactById,
+  removeContact,
+  addContact,
+} = require("./contacts.js");
 require("colors");
 
 const rl = readline.createInterface({
@@ -26,10 +32,12 @@ function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case "list":
       listContacts();
+      rl.close();
       break;
 
     case "get":
-      // ... id
+      getContactById(id);
+      rl.close();
       break;
 
     case "add":

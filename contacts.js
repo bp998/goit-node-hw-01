@@ -14,22 +14,18 @@ try {
   console.log(err);
 }
 
-// fs.readFile(contactsPath, (err, data) => {
-//   if (!err) {
-//     const rawData = data.toString();
-//     const contacts = JSON.parse(rawData);
-//     // console.log(contacts);
-//     parsedList = [...contacts];
-//     // contacts.map((contact) => console.log(contact.name));
-//   } else console.log(err);
-// });
-
 function listContacts() {
   console.table(parsedList);
 }
 
 function getContactById(contactId) {
-  // ...twój kod
+  let contact = parsedList.find((contact) => contact.id === contactId);
+  if (!contact) {
+    console.log(`Contact with id ${contactId} not found`.red);
+    return;
+  } else {
+    console.table(contact);
+  }
 }
 
 function removeContact(contactId) {
