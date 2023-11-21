@@ -10,7 +10,7 @@
   -p, --phone <type>   user phone
 ```
 
- ### examples:
+ ### Examples:
   Getting contacts list
 ```
 node index.js --action list
